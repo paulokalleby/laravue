@@ -64,8 +64,20 @@ const update = async () => {
   <PreLoader :show="state.loading" />
 
   <div class="row mb-2">
-    <div class="col-12">
-      <h3 class="mb-3">Perfil</h3>
+    <div class="col-12 mb-3">
+      <h4 class="fw-semibold mb-8">Perfil</h4>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <router-link
+              class="text-muted text-decoration-none"
+              :to="{ name: 'home.index' }"
+              >Home</router-link
+            >
+          </li>
+          <li class="breadcrumb-item" aria-current="page">Perfil</li>
+        </ol>
+      </nav>
     </div>
   </div>
 
