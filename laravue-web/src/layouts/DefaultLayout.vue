@@ -43,7 +43,7 @@ const toggleTheme = () => {
     :class="{ collapsed: isCollapsed }"
   >
     <div class="container">
-      <router-link :to="{ name: 'users.index' }" class="navbar-brand">
+      <router-link :to="{ name: 'home.index' }" class="navbar-brand">
         <b>{{ auth.user.tenant.name }}</b>
       </router-link>
       <button
