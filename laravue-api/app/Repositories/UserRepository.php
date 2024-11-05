@@ -14,7 +14,7 @@ class UserRepository
         $this->user = $user;
     }
 
-    public function getAll(array $filters = [])
+    public function all(array $filters = [])
     {
         $query =  $this->user->with('tokens')->when($filters, function (Builder $query) use ($filters) {
 
@@ -38,7 +38,7 @@ class UserRepository
             return $query->get();
     }
 
-    public function findById(string $id)
+    public function find(string $id)
     {
         return $this->user->with('roles')->findOrFail($id);
     }

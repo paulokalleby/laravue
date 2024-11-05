@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ResourceResource;
-use App\Repositories\ResourceRepository;
+use App\Services\ResourceService;
 
 class ResourceController extends Controller
 {
     protected $resource;
 
-    public function __construct(ResourceRepository $resource)
+    public function __construct(ResourceService $resource)
     {
         $this->resource = $resource;
     }
@@ -30,7 +30,7 @@ class ResourceController extends Controller
     public function index()
     {
         return ResourceResource::collection(
-            $this->resource->getAll()
+            $this->resource->getAllResources()
         );
     }
 }

@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Tenant;
 
-use App\Repositories\UserRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     protected $user;
 
-    public function __construct(UserRepository $user)
+    public function __construct(UserService $user)
     {
         $this->user = $user;
     }
@@ -48,7 +48,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         return UserResource::collection(
-            $this->user->getAll(
+            $this->user->getAllUsers(
                 (array) $request->all()
             )
         );
@@ -84,7 +84,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         return new UserResource(
-            $this->user->create(
+            $this->user->createUser(
                 (array) $request->validated()
             )
         );
@@ -112,7 +112,7 @@ class UserController extends Controller
     public function show(string $id)
     {
         return new UserResource(
-            $this->user->findById($id)
+            $this->user->findUserById($id)
         );
     }
 
@@ -151,7 +151,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, string $id)
     {
-        return $this->user->update(
+        return $this->user->updateUser(
             (array) $request->validated(),
             $id
         );
@@ -178,6 +178,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        return $this->user->delete($id);
+        return $this->user->deleteUser($id);
     }
 }

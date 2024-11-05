@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Tenant;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleRequest;
 use App\Http\Resources\RoleResource;
-use App\Repositories\RoleRepository;
+use App\Services\RoleService;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
     protected $role;
 
-    public function __construct(RoleRepository $role)
+    public function __construct(RoleService $role)
     {
         $this->role = $role;
     }
@@ -44,7 +44,7 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         return RoleResource::collection(
-            $this->role->getAll(
+            $this->role->getAllRoles(
                 (array) $request->all()
             )
         );
@@ -78,7 +78,7 @@ class RoleController extends Controller
     public function store(RoleRequest $request)
     {
         return new RoleResource(
-            $this->role->create(
+            $this->role->createRole(
                 (array) $request->validated()
             )
         );
@@ -106,7 +106,7 @@ class RoleController extends Controller
     public function show(string $id)
     {
         return new RoleResource(
-            $this->role->findById($id)
+            $this->role->findRoleById($id)
         );
     }
 
@@ -144,7 +144,7 @@ class RoleController extends Controller
      */
     public function update(RoleRequest $request, string $id)
     {
-        return $this->role->update(
+        return $this->role->updateRole(
             (array) $request->validated(),
             $id
         );
@@ -171,6 +171,6 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        return $this->role->delete($id);
+        return $this->role->deleteRole($id);
     }
 }

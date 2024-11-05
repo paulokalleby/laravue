@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Resource;
 
 class ResourceRepository
-{    
+{
     protected $resource;
 
     public function __construct(Resource $resource)
@@ -13,7 +13,7 @@ class ResourceRepository
         $this->resource = $resource;
     }
 
-    public function getAll()
+    public function all()
     {
         return $this->resource->with('permissions')->get();
     }
