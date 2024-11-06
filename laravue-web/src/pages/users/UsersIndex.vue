@@ -59,7 +59,7 @@ const showDeleteModal = (id) => {
   deleteModal.value.openModal();
 };
 
-const deleteItem = async (id) => {
+const handlerDelete = async (id) => {
   console.log(id);
   try {
     const response = await UserService.delete(id);
@@ -90,7 +90,7 @@ const fetchUsers = async (page = 1) => {
   <ConfirmDeleteModal
     :itemId="itemIdToDelete"
     ref="deleteModal"
-    @confirm-delete="deleteItem"
+    @confirm-delete="handlerDelete"
   />
 
   <div class="row mb-2">
