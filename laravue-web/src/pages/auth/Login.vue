@@ -26,7 +26,7 @@ const state = reactive({
 
 const v$ = useVuelidate(loginRules, state);
 
-const login = async () => {
+const handlerLogin = async () => {
   if (!(await v$.value.$validate())) return;
   state.loading = true;
   try {
@@ -47,7 +47,7 @@ const login = async () => {
   <div class="auth-max-width col-sm-8 col-md-6 col-xl-7 px-4">
     <h2 class="mb-1 fs-7 fw-bolder">Login</h2>
     <p class="mb-7">Informe suas credencias para acessar</p>
-    <form @submit.prevent="login">
+    <form @submit.prevent="handlerLogin">
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input

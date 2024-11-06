@@ -37,7 +37,7 @@ const v$ = useVuelidate(verifyRules, state);
 const rules = computed(() => resetRules(state.data.password));
 const r$ = useVuelidate(rules, state);
 
-const forgotPassword = async () => {
+const handlerForgotPassword = async () => {
   if (!(await f$.value.$validate())) return;
   state.loading = true;
   try {
@@ -54,7 +54,7 @@ const forgotPassword = async () => {
   }
 };
 
-const verifyCode = async () => {
+const handlerVerifyCode = async () => {
   if (!(await v$.value.$validate())) return;
   state.loading = true;
   try {
@@ -72,7 +72,7 @@ const verifyCode = async () => {
   }
 };
 
-const resetPassword = async () => {
+const handlerResetPassword = async () => {
   if (!(await r$.value.$validate())) return;
   state.loading = true;
   try {
@@ -96,7 +96,7 @@ const resetPassword = async () => {
   <div class="auth-max-width col-sm-8 col-md-6 col-xl-7 px-4">
     <h2 class="mb-1 fs-7 fw-bolder">Recuperar Senha</h2>
     <p class="mb-7">{{ state.description }}</p>
-    <form v-if="state.step == 1" @submit.prevent="forgotPassword">
+    <form v-if="state.step == 1" @submit.prevent="handlerForgotPassword">
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input
@@ -130,7 +130,7 @@ const resetPassword = async () => {
       </div>
     </form>
 
-    <form v-if="state.step == 2" @submit.prevent="verifyCode">
+    <form v-if="state.step == 2" @submit.prevent="handlerVerifyCode">
       <div class="mb-3">
         <label for="code" class="form-label">Código</label>
         <input
@@ -164,7 +164,7 @@ const resetPassword = async () => {
       </div>
     </form>
 
-    <form v-if="state.step == 3" @submit.prevent="resetPassword">
+    <form v-if="state.step == 3" @submit.prevent="handlerResetPassword">
       <div class="mb-3">
         <label for="password" class="form-label">Senha</label>
         <input

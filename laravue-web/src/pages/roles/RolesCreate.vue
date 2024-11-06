@@ -41,7 +41,7 @@ const fetchResources = async () => {
   }
 };
 
-const store = async () => {
+const handlerStore = async () => {
   if (!(await v$.value.$validate())) return;
   state.creating = true;
   try {
@@ -99,7 +99,7 @@ const permissionSelected = (permissionId) => {
     <div class="col-12">
       <div class="card border shadow-none py-3">
         <div class="card-body">
-          <form @submit.prevent="store">
+          <form @submit.prevent="handlerStore">
             <div class="row mb-3">
               <label for="name" class="col-sm-2 col-form-label text-md-end">Nome</label>
               <div class="col-md-4">

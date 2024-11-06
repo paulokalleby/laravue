@@ -60,7 +60,7 @@ const fetchUser = async () => {
   }
 };
 
-const update = async () => {
+const handlerUpdate = async () => {
   console.log(state.data);
   if (!(await v$.value.$validate())) return;
   state.updating = true;
@@ -122,7 +122,7 @@ const roleSelected = (roleId) => {
     <div class="col-12">
       <div class="card border shadow-none py-2">
         <div class="card-body">
-          <form @submit.prevent="update">
+          <form @submit.prevent="handlerUpdate">
             <div class="row mb-3">
               <label for="name" class="col-sm-2 col-form-label text-md-end">Nome</label>
               <div class="col-md-4">

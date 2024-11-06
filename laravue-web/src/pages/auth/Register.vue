@@ -27,7 +27,7 @@ const rules = computed(() => registerRules(state.data.password));
 
 const v$ = useVuelidate(rules, state); // Atualiza para usar o computed
 
-const register = async () => {
+const handlerRegister = async () => {
   if (!(await v$.value.$validate())) return;
   state.loading = true;
   try {
@@ -47,7 +47,7 @@ const register = async () => {
   <div class="auth-max-width col-sm-8 col-md-6 col-xl-7 px-4">
     <h2 class="mb-1 fs-7 fw-bolder">Registre-se</h2>
     <p class="mb-7">Se inscreva para ter acesso</p>
-    <form @submit.prevent="register">
+    <form @submit.prevent="handlerRegister">
       <div class="mb-3">
         <label for="business" class="form-label">Negócio</label>
         <input

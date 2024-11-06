@@ -59,7 +59,7 @@ const fetchRole = async () => {
   }
 };
 
-const update = async () => {
+const handlerUpdate = async () => {
   if (!(await v$.value.$validate())) return;
   state.updating = true;
   try {
@@ -119,7 +119,7 @@ const permissionSelected = (permissionId) => {
     <div class="col-12">
       <div class="card border shadow-none py-3">
         <div class="card-body">
-          <form @submit.prevent="update">
+          <form @submit.prevent="handlerUpdate">
             <div class="row mb-3">
               <label for="name" class="col-sm-2 col-form-label text-md-end">Nome</label>
               <div class="col-md-4">
