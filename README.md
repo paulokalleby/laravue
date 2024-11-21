@@ -16,6 +16,12 @@ git clone git@github.com:paulokalleby/laravue.git
 cd laravue/laravue-api
 ```
 
+Copiar as varieveis de ambiente
+
+```sh
+cp .env.example .env
+```
+
 Subir containers do projeto
 
 ```sh
