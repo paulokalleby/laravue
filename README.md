@@ -47,7 +47,7 @@ Execute a migração do banco de dados e popule a tabela de permissões
 ```
 
 Acesse a documentação da api
-[http://localhost:8080](http://localhost:8080)
+[http://localhost](http://localhost)
 
 ## Frontend
 
